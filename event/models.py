@@ -22,7 +22,7 @@ class Event(models.Model):
     place=models.CharField(max_length=255)
 
     # 관련 내용, etc 모델의 id를 참조
-    others=models.ManyToManyField(ETC, null=True)
+    others = models.ManyToManyField(ETC, blank=True)
     
     # 포스터 사진
     images_top=models.ImageField(upload_to='posters/top/', blank=True)

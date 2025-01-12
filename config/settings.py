@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
@@ -77,7 +77,7 @@ def get_env_variable(var_name):
     error_msg = 'Set the {} environment variable'.format(var_name)
     raise ImproperlyConfigured(error_msg)
   
-SECRET_KEY = get_env_variable('DJANGO_SECRET')
+SECRET_KEY = get_env_variable("DJANGO_SECRET")
 
 DATABASES = {
     'default': {
