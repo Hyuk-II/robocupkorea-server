@@ -9,6 +9,7 @@ class ETC(models.Model): # 관련 페이지
         return self.title
 
 class Event(models.Model):
+    id = models.CharField(max_length=50, primary_key=True, null=False)
     title=models.CharField(max_length=50) # 대회제목
     create_date=models.DateTimeField()    # 작성날짜
 
@@ -21,11 +22,11 @@ class Event(models.Model):
     place=models.CharField(max_length=255)
 
     # 관련 내용, etc 모델의 id를 참조
-    others=models.ManyToManyField(ETC)
+    others=models.ManyToManyField(ETC, null=True)
     
     # 포스터 사진
-    poster_top=models.ImageField(upload_to='posters/top/', null=True)
-    poster_bottom=models.ImageField(upload_to='posters/bottom/', null=True)
+    images_top=models.ImageField(upload_to='posters/top/', blank=True)
+    images_bottom=models.ImageField(upload_to='posters/bottom/', blank=True)
 
     # 개최리그
     leagues=ArrayField(models.CharField(max_length=50), blank=True, default=list)
