@@ -19,7 +19,7 @@ class Event(models.Model):
 
     # 개최장소 이름, 구글맵 링크
     location=models.CharField(max_length=50)
-    place=models.CharField(max_length=255)
+    map=models.CharField(max_length=255)
 
     # 관련 내용, etc 모델의 id를 참조
     others = models.ManyToManyField(ETC, blank=True)
