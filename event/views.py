@@ -13,7 +13,7 @@ def events(request):
         }
         for event in events
     ]
-    return JsonResponse(events_info)
+    return JsonResponse({"events": events_info}, status=200)
 
 
 def latest(request):
@@ -25,7 +25,7 @@ def latest(request):
             "dates": [latest_event.start_date, latest_event.end_date],
             "location": latest_event.location,
         }
-        return JsonResponse(result)
+        return JsonResponse({"data": result}, status=200)
     else:
         return JsonResponse({"error": "No events found"}, status=404)
 
@@ -49,4 +49,4 @@ def event_info(request, event_id):
         "others": others,
         "leagues": event.leagues,
     }
-    return JsonResponse(result)
+    return JsonResponse({"data": result}, status=200)
