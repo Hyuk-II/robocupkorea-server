@@ -25,8 +25,8 @@ class Event(models.Model):
     others = models.ManyToManyField(ETC, blank=True)
     
     # 포스터 사진
-    images_top=models.ImageField(upload_to='posters/top/', blank=True)
-    images_bottom=models.ImageField(upload_to='posters/bottom/', blank=True)
+    image_top=models.ImageField(upload_to='posters/top/', blank=True)
+    image_bottom=models.ImageField(upload_to='posters/bottom/', blank=True)
 
     # 개최리그
     leagues=ArrayField(models.CharField(max_length=50), blank=True, default=list)
