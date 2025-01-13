@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 APPEND_SLASH = False
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
@@ -82,7 +82,14 @@ def get_env_variable(var_name):
 SECRET_KEY = get_env_variable("DJANGO_SECRET")
 
 DATABASES = {
-    "default": env.db('DATABASE_URL')
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": get_env_variable("DB_NAME"),
+        "USER": get_env_variable("DB_USER"),
+        "PASSWORD": get_env_variable("DB_PASSWORD"),
+        "HOST": get_env_variable("DB_HOST"),
+        "PORT": get_env_variable("DB_PORT"),
+    }
 }
 
 # Password validation
@@ -118,12 +125,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
