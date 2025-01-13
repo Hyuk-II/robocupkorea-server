@@ -13,7 +13,7 @@ def events(request):
         }
         for event in events
     ]
-    return HttpResponse(events_info)
+    return JsonResponse(events_info)
 
 
 def latest(request):
