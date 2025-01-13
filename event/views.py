@@ -13,7 +13,7 @@ def events(request):
         }
         for event in events
     ]
-    return HttpResponse(events_info)
+    return HttpResponse(request, events_info)
 
 
 def latest(request):
@@ -49,4 +49,4 @@ def event_info(request, event_id):
         "others": others,
         "leagues": event.leagues,
     }
-    return JsonResponse(result)
+    return JsonResponse(request, result)
