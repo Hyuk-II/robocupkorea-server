@@ -1,33 +1,52 @@
-from django.http import JsonResponse, response
-from .models import Event
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import get_object_or_404
+from .models import Event, ETC
+
 
 def events(request):
     events = Event.objects.all()
-    id_list = []
-    for event in events:
-        id_list.append(event.id)
-    return JsonResponse({'id_list':id_list})
+    events_info = [
+        {
+            "id": event.id,
+            "title": event.title,
+            "images": [event.image_top.url if event.image_top else None],
+        }
+        for event in events
+    ]
+    return HttpResponse(events_info)
+
 
 def latest(request):
-    latest_event=Event.objects.order_by('-create_date').first()
-    others_list = [
-        {
-            "title": other.title,
-            "description": other.description,
-        }
-        for other in latest_event.others.all()
-    ]
+    latest_event = Event.objects.order_by("-create_date").first()
     if latest_event:
-        return JsonResponse({
-            'id': latest_event.id,
-            'title': latest_event.title,
-            'dates':[latest_event.start_date,latest_event.end_date],
-            'location': latest_event.location,
-            'map': latest_event.place,
-            'images':[latest_event.images_top.url if latest_event.images_top else None,
-                      latest_event.images_top.url if latest_event.images_top else None],
-            'others': others_list,
-            'leagues': latest_event.leagues,
-        })
+        result = {
+            "id": latest_event.id,
+            "title": latest_event.title,
+            "dates": [latest_event.start_date, latest_event.end_date],
+            "location": latest_event.location,
+        }
+        return JsonResponse(result)
     else:
-        return JsonResponse({'error': 'No events found'}, status=404)
+        return JsonResponse({"error": "No events found"}, status=404)
+
+
+def event_info(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    others = [
+        {"title": etc.title, "description": etc.description}
+        for etc in event.others.all()
+    ]
+    result = {
+        "id": event.id,
+        "title": event.title,
+        "dates": [event.start_date, event.end_date],
+        "location": event.location,
+        "map": event.map,
+        "images": [
+            event.image_top.url if event.image_top else None,
+            event.image_bottom.url if event.image_bottom else None,
+        ],
+        "others": others,
+        "leagues": event.leagues,
+    }
+    return JsonResponse(result)
