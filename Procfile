@@ -1,1 +1,1 @@
-web: gunicorn robocupkorea_server.wsgi:application
+web: gunicorn robocupkorea-server.wsgi --log-file-
