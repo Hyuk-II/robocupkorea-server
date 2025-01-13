@@ -46,7 +46,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
-CORS_ALLOWED_ORIGINS = ["*"]
 
 ROOT_URLCONF = "config.urls"
 
