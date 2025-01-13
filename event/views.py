@@ -25,9 +25,9 @@ def latest(request):
             "dates": [latest_event.start_date, latest_event.end_date],
             "location": latest_event.location,
         }
-        return JsonResponse(result)
+        return JsonResponse(request, result)
     else:
-        return JsonResponse({"error": "No events found"}, status=404)
+        return JsonResponse(request, {"error": "No events found"}, status=404)
 
 
 def event_info(request, event_id):
