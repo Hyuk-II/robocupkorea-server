@@ -2,7 +2,7 @@ from django.http import FileResponse, Http404, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import get_object_or_404
 from .models import Attachment, League
-import os
+import os, mimetypes
 
 
 def download(request, pdf_name):
@@ -27,7 +27,7 @@ def get_attachments(request, league_id):
         {
             "name": [attachment.name if attachment.document else None],
             "href": [attachment.document.url if attachment.document else None],
-            "type": [attachment.type if attachment.document else None],
+            "type": mimetypes.guess_type(attachment.name),
             "size": [attachment.document.size if attachment.document else None],
         }
         for attachment in attachments
@@ -45,7 +45,7 @@ def get_leagues(request):
                 {
                     "name": [attachment.name if attachment.document else None],
                     "href": [attachment.document.url if attachment.document else None],
-                    "type": [attachment.type if attachment.document else None],
+                    "type": mimetypes.guess_type(attachment.name),
                     "size": [attachment.document.size if attachment.document else None],
                 }
                 for attachment in attachments
@@ -73,7 +73,7 @@ def get_league(reqeust, league_id):
         {
             "name": [attachment.name if attachment.document else None],
             "href": [attachment.document.url if attachment.document else None],
-            "type": [attachment.type if attachment.document else None],
+            "type": mimetypes.guess_type(attachment.name),
             "size": [attachment.document.size if attachment.document else None],
         }
         for attachment in attachments

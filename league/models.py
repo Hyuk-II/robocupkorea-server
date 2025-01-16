@@ -5,9 +5,8 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class Attachment(models.Model):
-    name = models.CharField(max_length=50)
-    type = models.CharField(max_length=50)
     document = models.FileField("첨부 파일", upload_to="files/", blank=True)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
