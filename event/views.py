@@ -1,11 +1,11 @@
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from .models import Event, ETC
+from .models import Event
 
 
 def events(request):
     events = Event.objects.all()
-    events_info = [
+    events_list = [
         {
             "id": event.id,
             "title": event.title,
@@ -13,7 +13,7 @@ def events(request):
         }
         for event in events
     ]
-    return JsonResponse({"events": events_info}, status=200)
+    return JsonResponse({"events": events_list}, status=200)
 
 
 def latest(request):

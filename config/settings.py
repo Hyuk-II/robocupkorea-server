@@ -1,7 +1,5 @@
 from pathlib import Path
-import os
-from django.core.exceptions import ImproperlyConfigured
-import environ
+import environ, os
 
 env = environ.Env()
 environ.Env.read_env()
@@ -15,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 APPEND_SLASH = False
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
@@ -31,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "event.apps.EventConfig",
+    "league.apps.LeagueConfig",
     "corsheaders",
 ]
 
@@ -71,24 +70,16 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-def get_env_variable(var_name):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(var_name)
-        raise ImproperlyConfigured(error_msg)
-
-
-SECRET_KEY = get_env_variable("DJANGO_SECRET")
+SECRET_KEY = env("DJANGO_SECRET")
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": get_env_variable("DB_NAME"),
-        "USER": get_env_variable("DB_USER"),
-        "PASSWORD": get_env_variable("DB_PASSWORD"),
-        "HOST": get_env_variable("DB_HOST"),
-        "PORT": get_env_variable("DB_PORT"),
+        "NAME": env("DB_NAME"),
+        "USER": env("DB_USER"),
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
     }
 }
 

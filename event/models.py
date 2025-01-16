@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 
 class ETC(models.Model):  # 관련 페이지
@@ -35,3 +37,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@receiver(post_delete, sender=Event)
+def delete_attachment_file(sender, instance, **kwargs):
+    if instance.image_top and instance.image_top.path:
+        instance.image_top.delete(save=False)
+
+    if instance.image_bottom and instance.image_bottom.path:
+        instance.image_bottom.delete(save=False)
