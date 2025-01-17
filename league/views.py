@@ -25,7 +25,13 @@ def get_attachments(request, league_id):
     attachments = Attachment.objects.filter(id__in=league.attachments)
     attach_list = [
         {
-            "name": [attachment.name if attachment.document else None],
+            "name": [
+                (
+                    os.path.basename(attachment.document.name)
+                    if attachment.document
+                    else None
+                )
+            ],
             "href": [attachment.document.url if attachment.document else None],
             "type": mimetypes.guess_type(attachment.name),
             "size": [attachment.document.size if attachment.document else None],
@@ -43,7 +49,13 @@ def get_leagues(request):
             attachments = Attachment.objects.filter(id__in=league.attachments)
             attach_list = [
                 {
-                    "name": [attachment.name if attachment.document else None],
+                    "name": [
+                        (
+                            os.path.basename(attachment.document.name)
+                            if attachment.document
+                            else None
+                        )
+                    ],
                     "href": [attachment.document.url if attachment.document else None],
                     "type": mimetypes.guess_type(attachment.name),
                     "size": [attachment.document.size if attachment.document else None],
@@ -71,7 +83,13 @@ def get_league(reqeust, league_id):
     attachments = Attachment.objects.filter(id__in=league.attachments)
     attach_list = [
         {
-            "name": [attachment.name if attachment.document else None],
+            "name": [
+                (
+                    os.path.basename(attachment.document.name)
+                    if attachment.document
+                    else None
+                )
+            ],
             "href": [attachment.document.url if attachment.document else None],
             "type": mimetypes.guess_type(attachment.name),
             "size": [attachment.document.size if attachment.document else None],

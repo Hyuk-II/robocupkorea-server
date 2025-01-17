@@ -1,1 +1,3 @@
 config/.env
+media
+.DS_Store
