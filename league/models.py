@@ -5,11 +5,11 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class Attachment(models.Model):
-    document = models.FileField("첨부 파일", upload_to="files/", blank=True)
-    name = models.CharField(max_length=50)
+    id = models.CharField(max_length=50, primary_key=True)
+    document = models.FileField("첨부 파일", upload_to="files/")
 
     def __str__(self):
-        return self.name
+        return self.id
 
 
 class League(models.Model):
@@ -18,9 +18,7 @@ class League(models.Model):
     author = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     content = models.TextField()
-    attachments = ArrayField(
-        models.DecimalField(max_digits=5, decimal_places=0), default=list
-    )
+    attachments = ArrayField(models.CharField(max_length=50), default=list)
 
     def __str__(self):
         return self.title
