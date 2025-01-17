@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "event.apps.EventConfig",
     "league.apps.LeagueConfig",
+    "notice.apps.NoticeConfig",
     "corsheaders",
 ]
 
