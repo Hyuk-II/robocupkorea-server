@@ -5,7 +5,7 @@ import os
 
 
 class Attachment(models.Model):
-    document = models.FileField("첨부 파일", upload_to="leagues/files/")
+    document = models.FileField("첨부 파일", upload_to="notices/files/")
     name = models.CharField(max_length=255, blank=True)
 
     def save(self, *args, **kwargs):
@@ -17,7 +17,7 @@ class Attachment(models.Model):
         return self.name
 
 
-class League(models.Model):
+class Notice(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
     date = models.DateField()
     author = models.CharField(max_length=50)

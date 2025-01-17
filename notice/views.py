@@ -1,7 +1,7 @@
 from django.http import FileResponse, Http404, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import get_object_or_404
-from .models import Attachment, League
+from .models import Attachment, Notice
 import os, mimetypes
 
 
@@ -17,26 +17,12 @@ def download(request, pdf_name):
     return response
 
 
-def get_attachments(request, league_id):
-    league = get_object_or_404(League, pk=league_id)
-    attachments = [
-        {
-            "name": os.path.basename(attachment.document.name),
-            "href": attachment.document.url if attachment.document else None,
-            "type": mimetypes.guess_type(attachment.document.name)[0],
-            "size": attachment.document.size if attachment.document else None,
-        }
-        for attachment in league.attachments.all()
-    ]
-    return JsonResponse({"attachments": attachments})
+def get_notices(request):
+    notices = Notice.objects.all()
 
-
-def get_leagues(request):
-    leagues = League.objects.all()
-
-    if leagues.exists():
-        leagues_list = []
-        for league in leagues:
+    if notices.exists():
+        notices_list = []
+        for notice in notices:
             attachments = [
                 {
                     "name": os.path.basename(attachment.document.name),
@@ -44,25 +30,25 @@ def get_leagues(request):
                     "type": mimetypes.guess_type(attachment.document.name)[0],
                     "size": attachment.document.size if attachment.document else None,
                 }
-                for attachment in league.attachments.all()
+                for attachment in notice.attachments.all()
             ]
-            leagues_list.append(
+            notices_list.append(
                 {
-                    "id": league.id,
-                    "date": league.date,
-                    "author": league.author,
-                    "title": league.title,
-                    "content": league.content,
+                    "id": notice.id,
+                    "date": notice.date,
+                    "author": notice.author,
+                    "title": notice.title,
+                    "content": notice.content,
                     "attachments": attachments,
                 }
             )
-        return JsonResponse({"leagues": leagues_list})
+        return JsonResponse({"notices": notices_list})
     else:
         raise Http404("leagues가 존재하지 않습니다.")
 
 
-def get_league(reqeust, league_id):
-    league = get_object_or_404(League, pk=league_id)
+def get_notice(reqeust, notice_id):
+    notice = get_object_or_404(Notice, pk=notice_id)
     attachments = [
         {
             "name": os.path.basename(attachment.document.name),
@@ -70,14 +56,14 @@ def get_league(reqeust, league_id):
             "type": mimetypes.guess_type(attachment.document.name)[0],
             "size": attachment.document.size if attachment.document else None,
         }
-        for attachment in league.attachments.all()
+        for attachment in notice.attachments.all()
     ]
     response = {
-        "id": league.id,
-        "date": league.date,
-        "author": league.author,
-        "title": league.title,
-        "content": league.content,
+        "id": notice.id,
+        "date": notice.date,
+        "author": notice.author,
+        "title": notice.title,
+        "content": notice.content,
         "attachments": attachments,
     }
-    return JsonResponse({"leagues": response})
+    return JsonResponse(response)
