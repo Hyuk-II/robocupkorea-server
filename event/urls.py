@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.events, name="events"),
+    path("", views.get_events, name="get_events"),
     path("latest/", views.latest, name="latest"),
-    path("<str:event_id>/", views.event_info, name="event_info"),
+    path("<str:event_id>/", views.get_event, name="get_event"),
 ]

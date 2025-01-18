@@ -27,7 +27,7 @@ def get_notices(request):
                 "author": notice.author,
                 "title": notice.title,
                 "content": notice.content,
-                "attachmentsCount": notice.attachments.count,
+                "attachmentsCount": notice.attachments.count(),
             }
             for notice in notices
         ]
