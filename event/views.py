@@ -51,3 +51,7 @@ def get_event(request, event_id):
         "leagues": event.leagues,
     }
     return JsonResponse(result, status=200)
+
+
+def test(request):
+    return JsonResponse({"test": "test"})
