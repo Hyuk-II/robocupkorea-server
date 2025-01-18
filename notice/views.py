@@ -19,29 +19,18 @@ def download(request, pdf_name):
 
 def get_notices(request):
     notices = Notice.objects.all()
-
     if notices.exists():
-        notices_list = []
-        for notice in notices:
-            attachments = [
-                {
-                    "name": os.path.basename(attachment.document.name),
-                    "href": attachment.document.url if attachment.document else None,
-                    "type": mimetypes.guess_type(attachment.document.name)[0],
-                    "size": attachment.document.size if attachment.document else None,
-                }
-                for attachment in notice.attachments.all()
-            ]
-            notices_list.append(
-                {
-                    "id": notice.id,
-                    "date": notice.date,
-                    "author": notice.author,
-                    "title": notice.title,
-                    "content": notice.content,
-                    "attachments": attachments,
-                }
-            )
+        notices_list = [
+            {
+                "id": notice.id,
+                "date": notice.date,
+                "author": notice.author,
+                "title": notice.title,
+                "content": notice.content,
+                "attachmentsCount": notice.attachments.count,
+            }
+            for notice in notices
+        ]
         return JsonResponse({"notices": notices_list})
     else:
         raise Http404("leagues가 존재하지 않습니다.")
