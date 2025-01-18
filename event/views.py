@@ -17,7 +17,7 @@ def get_events(request):
 
 
 def latest(request):
-    latest_event = Event.objects.order_by("-create_date").first()
+    latest_event = Event.objects.order_by("-start_date").first()
     if latest_event:
         result = {
             "id": latest_event.id,

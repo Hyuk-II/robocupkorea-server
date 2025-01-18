@@ -15,7 +15,6 @@ class ETC(models.Model):  # 관련 페이지
 class Event(models.Model):
     id = models.CharField(max_length=50, primary_key=True, null=False)
     title = models.CharField(max_length=50)  # 대회제목
-    create_date = models.DateTimeField()  # 작성날짜
 
     # 개최기간
     start_date = models.DateField()
