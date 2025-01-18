@@ -130,5 +130,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://port-0-rwdp-backend-m5swwza017d4d90c.sel4.cloudtype.app",
-    "https://port-0-robocupkorea-server-m5vvzrvneacdfe8f.sel4.cloudtype.app/",
+    "https://port-0-robocupkorea-server-m5vvzrvneacdfe8f.sel4.cloudtype.app",
 ]
