@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from .models import Event
 
 
-def events(request):
+def get_events(request):
     events = Event.objects.all()
     events_list = [
         {
@@ -30,7 +30,7 @@ def latest(request):
         return JsonResponse({"error": "No events found"}, status=404)
 
 
-def event_info(request, event_id):
+def get_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     others = [
         {"title": etc.title, "description": etc.description}
@@ -42,6 +42,7 @@ def event_info(request, event_id):
         "dates": [event.start_date, event.end_date],
         "location": event.location,
         "map": event.map,
+        "registration": "https:",
         "images": [
             event.image_top.url if event.image_top else None,
             event.image_bottom.url if event.image_bottom else None,
