@@ -1,20 +1,13 @@
 from django.http import FileResponse, Http404, JsonResponse
-from django.core.files.storage import FileSystemStorage
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from .models import Attachment, League
 import os, mimetypes
 
 
 def download(request, pdf_name):
     attach = get_object_or_404(Attachment, name=pdf_name)
-    document = attach.document
-    file_path = document.path
-    fs = FileSystemStorage(file_path)
-    response = FileResponse(fs.open(file_path, "rb"))
-    response["Content-Disposition"] = (
-        f"attachment; filename={os.path.basename(document.name)}"
-    )
-    return response
+    file_url = attach.document.url
+    return redirect(file_url)
 
 
 def get_attachments(request, league_id):
