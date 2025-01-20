@@ -24,7 +24,7 @@ def get_attachments(request, league_id):
             "name": os.path.basename(attachment.document.name),
             "href": attachment.document.url if attachment.document else None,
             "type": mimetypes.guess_type(attachment.document.name)[0],
-            "size": attachment.document.size if attachment.document else None,
+            "size": attachment.size,
         }
         for attachment in league.attachments.all()
     ]
@@ -37,15 +37,6 @@ def get_leagues(request):
     if leagues.exists():
         leagues_list = []
         for league in leagues:
-            attachments = [
-                {
-                    "name": os.path.basename(attachment.document.name),
-                    "href": attachment.document.url if attachment.document else None,
-                    "type": mimetypes.guess_type(attachment.document.name)[0],
-                    "size": attachment.document.size if attachment.document else None,
-                }
-                for attachment in league.attachments.all()
-            ]
             leagues_list.append(
                 {
                     "id": league.id,
@@ -53,7 +44,7 @@ def get_leagues(request):
                     "author": league.author,
                     "title": league.title,
                     "content": league.content,
-                    "attachments": attachments,
+                    "attachments": league.attachments.count(),
                 }
             )
         return JsonResponse({"leagues": leagues_list})
@@ -68,7 +59,7 @@ def get_league(reqeust, league_id):
             "name": os.path.basename(attachment.document.name),
             "href": attachment.document.url if attachment.document else None,
             "type": mimetypes.guess_type(attachment.document.name)[0],
-            "size": attachment.document.size if attachment.document else None,
+            "size": attachment.size,
         }
         for attachment in league.attachments.all()
     ]

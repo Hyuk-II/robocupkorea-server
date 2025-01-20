@@ -7,7 +7,7 @@ class LeagueAdmin(admin.ModelAdmin):
 
 
 class AttachAdmin(admin.ModelAdmin):
-    exclude = ("name",)
+    exclude = ("name", "size")
 
 
 admin.site.register(League, LeagueAdmin)

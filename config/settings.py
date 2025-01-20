@@ -70,8 +70,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
 SECRET_KEY = env("DJANGO_SECRET")
+
+DEFAULT_FILE_STORAGE = "django_storage_supabase.supabase.SupabaseStorage"
+SUPABASE_URL = env("SUPABASE_URL")
+SUPABASE_API_KEY = env("SUPABASE_API_KEY")
+SUPABASE_STORAGE_BUCKET_NAME = env("SUPABASE_STORAGE_BUCKET_NAME")
+MEDIA_URL = f"{SUPABASE_URL}/storage/v1/object/public/{SUPABASE_STORAGE_BUCKET_NAME}/"
 
 DATABASES = {
     "default": {
@@ -121,8 +126,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

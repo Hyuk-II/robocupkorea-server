@@ -3,7 +3,7 @@ from .models import *
 
 
 class AttachAdmin(admin.ModelAdmin):
-    exclude = ("name",)
+    exclude = ("name", "size")
 
 
 admin.site.register(Notice)

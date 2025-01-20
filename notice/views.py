@@ -43,7 +43,7 @@ def get_notice(reqeust, notice_id):
             "name": os.path.basename(attachment.document.name),
             "href": attachment.document.url if attachment.document else None,
             "type": mimetypes.guess_type(attachment.document.name)[0],
-            "size": attachment.document.size if attachment.document else None,
+            "size": attachment.size,
         }
         for attachment in notice.attachments.all()
     ]

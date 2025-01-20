@@ -10,7 +10,6 @@ urlpatterns = [
     path("api/events/", include("event.urls")),
     path("api/leagues/", include("league.urls")),
     path("api/notices/", include("notice.urls")),
-    re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
     re_path(
         r"^static/(?:.*)$",
         serve,
