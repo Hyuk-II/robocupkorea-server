@@ -24,6 +24,7 @@ def latest(request):
             "title": latest_event.title,
             "dates": [latest_event.start_date, latest_event.end_date],
             "location": latest_event.location,
+            "register": latest_event.register,
         }
         return JsonResponse(result, status=200)
     else:
@@ -42,7 +43,7 @@ def get_event(request, event_id):
         "dates": [event.start_date, event.end_date],
         "location": event.location,
         "map": event.map,
-        "registration": "https:",
+        "register": event.register,
         "images": [
             event.image_top.url if event.image_top else None,
             event.image_bottom.url if event.image_bottom else None,

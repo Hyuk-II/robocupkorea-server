@@ -22,6 +22,7 @@ class Event(models.Model):
 
     location = models.CharField(max_length=50)
     map = models.CharField(max_length=255)
+    register = models.CharField(max_length=255)
 
     others = models.ManyToManyField(ETC, blank=True)
 
