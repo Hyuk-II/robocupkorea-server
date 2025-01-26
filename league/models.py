@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from config.supabase_storage import SupabaseStorage
-import os
+import os, uuid
 
 
 class Attachment(models.Model):
@@ -24,9 +24,8 @@ class Attachment(models.Model):
 
 
 class League(models.Model):
-    id = models.CharField(max_length=50, primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField()
-    author = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     content = models.TextField()
     attachments = models.ManyToManyField(Attachment, blank=True)

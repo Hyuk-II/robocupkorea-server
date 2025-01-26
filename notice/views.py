@@ -17,7 +17,7 @@ def get_notices(request):
             {
                 "id": notice.id,
                 "date": notice.date,
-                "author": notice.author,
+                "author": "RCKA",
                 "title": notice.title,
                 "content": notice.content,
                 "attachmentsCount": notice.attachments.count(),
@@ -43,7 +43,7 @@ def get_notice(reqeust, notice_id):
     response = {
         "id": notice.id,
         "date": notice.date,
-        "author": notice.author,
+        "author": "RCKA",
         "title": notice.title,
         "content": notice.content,
         "attachments": attachments,

@@ -34,7 +34,7 @@ def get_leagues(request):
                 {
                     "id": league.id,
                     "date": league.date,
-                    "author": league.author,
+                    "author": "RCKA",
                     "title": league.title,
                     "content": league.content,
                     "attachments": league.attachments.count(),
@@ -59,7 +59,7 @@ def get_league(reqeust, league_id):
     response = {
         "id": league.id,
         "date": league.date,
-        "author": league.author,
+        "author": "RCKA",
         "title": league.title,
         "content": league.content,
         "attachments": attachments,
