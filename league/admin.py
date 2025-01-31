@@ -3,12 +3,14 @@ from .models import *
 
 
 class LeagueAdmin(admin.ModelAdmin):
-    search_fields = ["id"]
+    list_display = ("id",)
+    fields = ("id", "attachments")
 
 
-class AttachAdmin(admin.ModelAdmin):
-    exclude = ("name", "size")
+class LeagueENGAdmin(admin.ModelAdmin):
+    list_display = ("id",)
+    fields = ("id", "attachments")
 
 
 admin.site.register(League, LeagueAdmin)
-admin.site.register(Attachment, AttachAdmin)
+admin.site.register(League_ENG, LeagueENGAdmin)

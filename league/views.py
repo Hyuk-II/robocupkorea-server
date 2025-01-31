@@ -1,20 +1,20 @@
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
-from .models import Attachment, League, Attachment_ENG, League_ENG
+from .models import League, League_ENG
 import os, mimetypes
 from rest_framework.views import APIView
 
 
-class Download(APIView):
-    def get(self, request, pdf_name):
-        lang = request.GET["lang"]
-        if lang == "ko-KR":
-            attach = get_object_or_404(Attachment, name=pdf_name)
-        elif lang == "en-US":
-            attach = get_object_or_404(Attachment_ENG, name=pdf_name)
+# class Download(APIView):
+#     def get(self, request, pdf_name):
+#         lang = request.GET["lang"]
+#         if lang == "ko-KR":
+#             attach = get_object_or_404(Attachment, name=pdf_name)
+#         elif lang == "en-US":
+#             attach = get_object_or_404(Attachment_ENG, name=pdf_name)
 
-        file_url = attach.document.url
-        return redirect(file_url)
+#         file_url = attach.document.url
+#         return redirect(file_url)
 
 
 class GetAttachments(APIView):
@@ -25,16 +25,7 @@ class GetAttachments(APIView):
         elif lang == "en-US":
             league = get_object_or_404(League_ENG, pk=league_id)
 
-        attachments = [
-            {
-                "name": os.path.basename(attachment.document.name),
-                "href": attachment.document.url if attachment.document else None,
-                "type": mimetypes.guess_type(attachment.document.name)[0],
-                "size": attachment.size,
-            }
-            for attachment in league.attachments.all()
-        ]
-        return JsonResponse({"attachments": attachments})
+        return JsonResponse({"attachments": league.attachments})
 
 
 class GetLeagues(APIView):
@@ -51,11 +42,8 @@ class GetLeagues(APIView):
                 leagues_list.append(
                     {
                         "id": league.id,
-                        "date": league.date,
                         "author": "RCKA",
-                        "title": league.title,
-                        "content": league.content,
-                        "attachments": league.attachments.count(),
+                        "attachments": len(league.attachments),
                     }
                 )
             return JsonResponse({"leagues": leagues_list})
@@ -71,22 +59,10 @@ class GetLeague(APIView):
         elif lang == "en-US":
             league = get_object_or_404(League_ENG, pk=league_id)
 
-        attachments = [
-            {
-                "name": os.path.basename(attachment.document.name),
-                "href": attachment.document.url if attachment.document else None,
-                "type": mimetypes.guess_type(attachment.document.name)[0],
-                "size": attachment.size,
-            }
-            for attachment in league.attachments.all()
-        ]
         response = {
             "id": league.id,
-            "date": league.date,
             "author": "RCKA",
-            "title": league.title,
-            "content": league.content,
-            "attachments": attachments,
+            "attachments": league.attachments,
         }
 
         return JsonResponse({"leagues": response})
