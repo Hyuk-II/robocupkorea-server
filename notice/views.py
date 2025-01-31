@@ -29,7 +29,10 @@ class GetNotices(APIView):
             notices_list = [
                 {
                     "id": notice.id,
+                    "date": notice.date,
                     "author": "RCKA",
+                    "title": notice.title,
+                    "content": notice.content,
                     "attachmentsCount": len(notice.attachments),
                 }
                 for notice in notices
@@ -49,8 +52,11 @@ class GetNotice(APIView):
 
         response = {
             "id": notice.id,
+            "date": notice.date,
             "author": "RCKA",
-            "attachments": notice.attachments,
+            "title": notice.title,
+            "content": notice.content,
+            "attachmentsCount": len(notice.attachments),
         }
 
         return JsonResponse(response)

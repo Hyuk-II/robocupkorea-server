@@ -11,8 +11,14 @@ class Notice(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
+    date = models.DateField(null=True)
+    title = models.CharField(max_length=255, blank=True)
+    content = models.CharField(max_length=255, blank=True)
 
     attachments = models.JSONField(default=list, blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Notice_ENG(models.Model):
@@ -21,5 +27,11 @@ class Notice_ENG(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
+    date = models.DateField(null=True)
+    title = models.CharField(max_length=255, blank=True)
+    content = models.CharField(max_length=255, blank=True)
 
     attachments = models.JSONField(default=list, blank=True)
+
+    def __str__(self):
+        return self.title
