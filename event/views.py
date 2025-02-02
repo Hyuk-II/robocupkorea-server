@@ -68,5 +68,6 @@ class GetEvent(APIView):
             ],
             "others": event.others,
             "leagues": event.leagues,
+            "volunteer": event.volunteer,
         }
         return JsonResponse(result, status=200)

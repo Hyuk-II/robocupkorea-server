@@ -27,6 +27,8 @@ class Event(models.Model):
 
     leagues = ArrayField(models.CharField(max_length=50), blank=True, default=list)
 
+    volunteer = models.CharField(max_length=255)
+
     def __str__(self):
         return self.title
 
@@ -52,6 +54,8 @@ class Event_ENG(models.Model):
     )
 
     leagues = ArrayField(models.CharField(max_length=50), blank=True, default=list)
+
+    volunteer = models.CharField(max_length=255)
 
     def __str__(self):
         return self.title
