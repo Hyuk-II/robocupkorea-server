@@ -8,7 +8,7 @@
 |[@jiuuoo](https://github.com/JIUUOO)|[@Hyuk-II](https://github.com/Hyuk-II)|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
-# 📦 Frontend Libraries
+# 📦 Backend Libraries
 |라이브러리|버전|기능|
 |-|-|-|
 |Django|5.1.4|백엔드 개발을 위한 프레임워크|
