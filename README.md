@@ -4,7 +4,7 @@
 # 💻Developers
 |FE|BE|
 |-|-|
-|<span style="width:100px">![jiuuoo](./readme/jiuuoo.png)</span>|<span style="width:100px">![Hyuk-II](./readme/Hyuk-II.jpeg)</span>|
+|<div style="width:100px">![jiuuoo](./readme/jiuuoo.png)</div>|<div style="width:100px">![Hyuk-II](./readme/Hyuk-II.jpeg)</div>|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
 # 🎯 Commit Rules  
