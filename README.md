@@ -8,6 +8,10 @@
 |[@jiuuoo](https://github.com/JIUUOO)|[@Hyuk-II](https://github.com/Hyuk-II)|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
+# 📦 Frontend Libraries
+|라이브러리||버전|기능|
+|-|-|-|
+
 # 🎯 Commit Rules  
 🎨 Style: 코드 형식 수정, 기능 변경이 없는 경우  
 🔥 Remove: 코드 파일 제거  
