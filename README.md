@@ -4,7 +4,7 @@
 # 💻Developers
 |PM & FE|BE|
 |-|-|
-|<img src="./readme/jiuuoo.png" width="200" height="200" >|<img src="./readme/Hyuk-II.jpeg" width="200" height="200" >|
+|<img src="https://avatars.githubusercontent.com/u/90130563?v=4" width="200" height="200" >|<img src="./readme/Hyuk-II.jpeg" width="200" height="200" >|
 |[@jiuuoo](https://github.com/JIUUOO)|[@Hyuk-II](https://github.com/Hyuk-II)|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
