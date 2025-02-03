@@ -3,8 +3,8 @@
 ![poster](./readme/rcka-banner.jpg)
 # 💻Developers
 |PM & FE| BE|
-|--------|--------|
-|![jiuuoo](./readme/jiuuoo.png)|![Hyuk-II](./readme/Hyuk-II.jpeg)|
+|----|----|
+|<span style="width:100">![jiuuoo](./readme/jiuuoo.png)</span>|<span style="width:100">![Hyuk-II](./readme/Hyuk-II.jpeg)</span>|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
 # 🎯 Commit Rules  
