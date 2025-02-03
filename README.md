@@ -2,9 +2,9 @@
 사단법인 한국로보컵협회는 로봇을 연구하는 학생들을 위해 국가적 및 국제적 로봇 이벤트인 로보컵 리그를 주최하며, 프로젝트 중심의 교육을 증진하는 비영리 단체입니다.  
 ![poster](./readme/rcka-banner.jpg)
 # 💻Developers
-|FE|BE|
+|PM & FE|BE|
 |-|-|
-|<img src="./readme/jiuuoo.png" width="50" height="50" >|<img src="./readme/Hyuk-II.jpeg" width="50" height="50" >|
+|<img src="./readme/jiuuoo.png" width="200" height="200" >|<img src="./readme/Hyuk-II.jpeg" width="200" height="200" >|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
 # 🎯 Commit Rules  
