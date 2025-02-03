@@ -11,6 +11,11 @@
 # 📦 Frontend Libraries
 |라이브러리|버전|기능|
 |-|-|-|
+|Django|5.1.4|백엔드 개발을 위한 프레임워크|
+|django-cors-headers|4.6.0|설정한 출처에서 오는 요청을 허용하는 라이브러리|
+|django-environ|0.11.2|.env로 환경변수를 관리하기 위한 라이브러리|
+|django-storage-supabase|0.1.0||
+
 
 # 🎯 Commit Rules  
 🎨 Style: 코드 형식 수정, 기능 변경이 없는 경우  
