@@ -3,7 +3,7 @@
 ![poster](./readme/rcka-banner.jpg)
 # 💻Developers
 |PM & FE| BE|
-|-----|-----|
+|--------|--------|
 |![jiuuoo](./readme/jiuuoo.png)|![Hyuk-II](./readme/Hyuk-II.jpeg)|
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
