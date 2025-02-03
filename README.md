@@ -5,6 +5,8 @@
 |PM & FE| BE|
 |-----|-----|
 |
+# 🛠️ System Architecture
+![sysytem](./readme/system-architecture.png)
 # 🎯 Commit Rules  
 🎨 Style: 코드 형식 수정, 기능 변경이 없는 경우  
 🔥 Remove: 코드 파일 제거  
