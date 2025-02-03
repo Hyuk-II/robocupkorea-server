@@ -15,6 +15,10 @@
 |django-cors-headers|4.6.0|설정한 출처에서 오는 요청을 허용하는 라이브러리|
 |django-environ|0.11.2|.env로 환경변수를 관리하기 위한 라이브러리|
 |django-storage-supabase|0.1.0|프로젝트 내에서 Supabase 서비스의 사용을 위한 라이브러리|
+|djangorestframework|3.15.2|웹 api를 사용하기 위한 라이브러리|
+|pillow|11.1.0|이미지 형식의 파일을 다루기 위한 라이브러리|
+|postgrest-py|0.5.0||
+|psycopg2|2.9.10||
 
 
 # 🎯 Commit Rules  
