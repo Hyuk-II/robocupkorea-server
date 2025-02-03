@@ -9,7 +9,7 @@
 # 🛠️ System Architecture
 ![sysytem](./readme/system-architecture.png)
 # 📦 Frontend Libraries
-|라이브러리||버전|기능|
+|라이브러리|버전|기능|
 |-|-|-|
 
 # 🎯 Commit Rules  
