@@ -17,8 +17,9 @@
 |django-storage-supabase|0.1.0|프로젝트 내에서 Supabase 서비스의 사용을 위한 라이브러리|
 |djangorestframework|3.15.2|웹 api를 사용하기 위한 라이브러리|
 |pillow|11.1.0|이미지 형식의 파일을 다루기 위한 라이브러리|
-|postgrest-py|0.5.0||
-|psycopg2|2.9.10||
+|postgrest-py|0.5.0|PostgreSQL 데이터 베이스 api를 사용하기 위한 라이브러리|
+|psycopg2|2.9.10|PostgreSQL 데이터베이스와 상호 작용하기 위한 라이브러리|
+|whitenoise|6.8.2|정적파일을 간편하게 사용하기 위한 라이브러리|
 
 
 # 🎯 Commit Rules  
